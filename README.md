@@ -5,6 +5,12 @@ Estados Unidos. El trabajo combina un notebook de exploracion con una aplicacion
 web hecha en Streamlit para convertir el analisis inicial en un dashboard
 interactivo.
 
+## Aplicacion desplegada
+
+La aplicacion esta disponible en Render:
+
+https://tripleten-zoto.onrender.com/
+
 ## Objetivo del proyecto
 
 El objetivo principal es practicar un flujo de trabajo completo de analisis de
