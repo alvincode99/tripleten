@@ -19,11 +19,24 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+## Dataset
+
+El conjunto de datos principal del proyecto esta en:
+
+```text
+data/vehicles_us.csv
+```
+
+Fuente original:
+https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/Data_sprint_4_Refactored/vehicles_us.csv
+
 ## Estructura inicial
 
 - `app.py`: aplicacion Streamlit inicial.
 - `requirements.txt`: dependencias minimas del proyecto.
 - `data/`: carpeta para guardar datasets locales.
+- `docs/dataset.md`: nota con la fuente del dataset.
 
-Los archivos de datos se ignoran en Git para evitar subir datasets pesados o
-privados por accidente.
+Los archivos de datos se ignoran en Git por defecto para evitar subir datasets
+pesados o privados por accidente. La excepcion es `data/vehicles_us.csv`,
+porque es el dataset publico usado en este proyecto.

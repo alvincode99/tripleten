@@ -14,6 +14,7 @@ env/
 .ipynb_checkpoints/
 
 data/*.csv
+!data/vehicles_us.csv
 data/*.xlsx
 data/*.parquet
 !data/.gitkeep

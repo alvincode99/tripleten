@@ -1,6 +1,11 @@
+from pathlib import Path
+
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+
+
+DATA_PATH = Path("data/vehicles_us.csv")
 
 
 st.set_page_config(
@@ -10,15 +15,19 @@ st.set_page_config(
 )
 
 st.title("TripleTen EDA")
-st.write("Base inicial para explorar datos con pandas, Plotly y Streamlit.")
+st.write("Analisis exploratorio de anuncios de coches usados.")
 
-uploaded_file = st.file_uploader("Carga un archivo CSV", type=["csv"])
+if DATA_PATH.exists():
+    df = pd.read_csv(DATA_PATH)
+    st.caption(f"Dataset cargado: {DATA_PATH}")
+else:
+    uploaded_file = st.file_uploader("Carga un archivo CSV", type=["csv"])
 
-if uploaded_file is None:
-    st.info("Cuando tengamos el dataset, cargalo aqui para empezar el analisis.")
-    st.stop()
+    if uploaded_file is None:
+        st.info("Coloca el dataset en data/vehicles_us.csv o carga un CSV.")
+        st.stop()
 
-df = pd.read_csv(uploaded_file)
+    df = pd.read_csv(uploaded_file)
 
 st.subheader("Vista previa")
 st.dataframe(df.head(), use_container_width=True)
