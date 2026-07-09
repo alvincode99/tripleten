@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import pandas as pd
-import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
 
 
@@ -18,7 +18,7 @@ st.title("TripleTen EDA")
 st.write("Analisis exploratorio de anuncios de coches usados.")
 
 if DATA_PATH.exists():
-    df = pd.read_csv(DATA_PATH)
+    car_data = pd.read_csv(DATA_PATH)
     st.caption(f"Dataset cargado: {DATA_PATH}")
 else:
     uploaded_file = st.file_uploader("Carga un archivo CSV", type=["csv"])
@@ -27,19 +27,22 @@ else:
         st.info("Coloca el dataset en data/vehicles_us.csv o carga un CSV.")
         st.stop()
 
-    df = pd.read_csv(uploaded_file)
+    car_data = pd.read_csv(uploaded_file)
 
-st.subheader("Vista previa")
-st.dataframe(df.head(), use_container_width=True)
+st.header("Vista previa del conjunto de datos")
+st.dataframe(car_data.head(), width="stretch")
 
-st.subheader("Resumen")
-st.write(df.describe(include="all"))
+st.header("Resumen estadistico")
+st.dataframe(car_data.describe(include="all").astype(str), width="stretch")
 
-numeric_columns = df.select_dtypes(include="number").columns.tolist()
+st.header("Visualizaciones")
 
-if numeric_columns:
-    selected_column = st.selectbox("Selecciona una columna numerica", numeric_columns)
-    fig = px.histogram(df, x=selected_column, title=f"Distribucion de {selected_column}")
-    st.plotly_chart(fig, use_container_width=True)
-else:
-    st.warning("El archivo no contiene columnas numericas para graficar.")
+if st.button("Construir histograma del odometro"):
+    st.write("Distribucion de la columna `odometer`.")
+    fig = go.Figure(data=[go.Histogram(x=car_data["odometer"])])
+    fig.update_layout(
+        title_text="Distribucion del odometro",
+        xaxis_title="Odometro",
+        yaxis_title="Cantidad de anuncios",
+    )
+    st.plotly_chart(fig, width="stretch")

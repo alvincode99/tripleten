@@ -19,6 +19,17 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+## Notebook de analisis
+
+El analisis exploratorio inicial esta en:
+
+```text
+notebooks/EDA.ipynb
+```
+
+Abre este notebook en VS Code y ejecuta las celdas para revisar la carga del
+dataset y las visualizaciones iniciales con Plotly.
+
 ## Dataset
 
 El conjunto de datos principal del proyecto esta en:
@@ -36,6 +47,7 @@ https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/Data_sprint_4_R
 - `requirements.txt`: dependencias minimas del proyecto.
 - `data/`: carpeta para guardar datasets locales.
 - `docs/dataset.md`: nota con la fuente del dataset.
+- `notebooks/EDA.ipynb`: notebook de analisis exploratorio de datos.
 
 Los archivos de datos se ignoran en Git por defecto para evitar subir datasets
 pesados o privados por accidente. La excepcion es `data/vehicles_us.csv`,
