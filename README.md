@@ -1,7 +1,14 @@
 # TripleTen
 
-Proyecto base para desarrollar un analisis exploratorio de datos con Python,
-pandas, Plotly y Streamlit.
+Proyecto de analisis exploratorio de datos sobre anuncios de coches usados en
+Estados Unidos. La aplicacion web permite cargar el dataset del proyecto,
+consultar una vista previa de los datos, revisar estadisticas descriptivas y
+generar visualizaciones interactivas con Plotly desde Streamlit.
+
+La app incluye dos controles principales:
+
+- `Construir histograma`: muestra la distribucion de la columna `odometer`.
+- `Construir grafico de dispersion`: compara `odometer` contra `price`.
 
 ## Entorno virtual
 

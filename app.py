@@ -37,12 +37,40 @@ st.dataframe(car_data.describe(include="all").astype(str), width="stretch")
 
 st.header("Visualizaciones")
 
-if st.button("Construir histograma del odometro"):
-    st.write("Distribucion de la columna `odometer`.")
+hist_button = st.button("Construir histograma")
+scatter_button = st.button("Construir grafico de dispersion")
+
+if hist_button:
+    st.write(
+        "Creacion de un histograma para el conjunto de datos de anuncios de "
+        "venta de coches."
+    )
     fig = go.Figure(data=[go.Histogram(x=car_data["odometer"])])
     fig.update_layout(
         title_text="Distribucion del odometro",
         xaxis_title="Odometro",
         yaxis_title="Cantidad de anuncios",
+    )
+    st.plotly_chart(fig, width="stretch")
+
+if scatter_button:
+    st.write(
+        "Creacion de un grafico de dispersion para comparar odometro y precio."
+    )
+    scatter_data = car_data.dropna(subset=["odometer", "price"])
+    fig = go.Figure(
+        data=[
+            go.Scatter(
+                x=scatter_data["odometer"],
+                y=scatter_data["price"],
+                mode="markers",
+                marker={"opacity": 0.35, "size": 6},
+            )
+        ]
+    )
+    fig.update_layout(
+        title_text="Relacion entre odometro y precio",
+        xaxis_title="Odometro",
+        yaxis_title="Precio",
     )
     st.plotly_chart(fig, width="stretch")
