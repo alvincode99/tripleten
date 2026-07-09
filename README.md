@@ -1,14 +1,25 @@
 # TripleTen
 
 Proyecto de analisis exploratorio de datos sobre anuncios de coches usados en
-Estados Unidos. La aplicacion web permite cargar el dataset del proyecto,
-consultar una vista previa de los datos, revisar estadisticas descriptivas y
-generar visualizaciones interactivas con Plotly desde Streamlit.
+Estados Unidos. El objetivo es practicar un flujo completo de trabajo con
+Python: cargar un CSV, explorarlo en un notebook, construir visualizaciones con
+Plotly y convertir los hallazgos iniciales en una aplicacion web con Streamlit.
 
-La app incluye dos controles principales:
+La aplicacion funciona como un dashboard interactivo. Permite filtrar anuncios
+por ano del modelo, precio, tipo de vehiculo, condicion y traccion 4WD; muestra
+metricas rapidas del subconjunto filtrado; presenta una vista previa de los
+datos; y genera visualizaciones interactivas para explorar patrones.
 
-- `Construir histograma`: muestra la distribucion de la columna `odometer`.
-- `Construir grafico de dispersion`: compara `odometer` contra `price`.
+Funcionalidades principales:
+
+- Filtros laterales para enfocar el analisis.
+- Metricas de anuncios, precio mediano, odometro mediano y modelos unicos.
+- Tabla de vista previa y resumen estadistico.
+- Boton `Construir histograma` para revisar la distribucion de `odometer`.
+- Boton `Construir grafico de dispersion` para comparar `odometer` contra
+  `price`.
+- Casillas opcionales para mantener ambas visualizaciones visibles mientras se
+  cambian los filtros.
 
 ## Entorno virtual
 
@@ -24,6 +35,13 @@ pip install -r requirements.txt
 
 ```bash
 streamlit run app.py
+```
+
+Despues de ejecutar el comando, abre la URL local que muestra Streamlit,
+normalmente:
+
+```text
+http://localhost:8501
 ```
 
 ## Notebook de analisis
@@ -50,7 +68,7 @@ https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/Data_sprint_4_R
 
 ## Estructura inicial
 
-- `app.py`: aplicacion Streamlit inicial.
+- `app.py`: dashboard Streamlit del proyecto.
 - `requirements.txt`: dependencias minimas del proyecto.
 - `data/`: carpeta para guardar datasets locales.
 - `docs/dataset.md`: nota con la fuente del dataset.
