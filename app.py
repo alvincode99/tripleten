@@ -7,6 +7,7 @@ import streamlit as st
 
 
 DATA_PATH = Path("data/vehicles_us.csv")
+LOGO_PATH = Path("assets/jamndev-logo.png")
 PAGE_TITLE = "Dashboard de anuncios de coches usados"
 
 REQUIRED_COLUMNS = {
@@ -100,6 +101,9 @@ def format_number(value: float) -> str:
 def build_sidebar_filters(data: pd.DataFrame) -> FilterSettings:
     """Crea filtros interactivos y devuelve los valores seleccionados."""
 
+    if LOGO_PATH.exists():
+        st.sidebar.image(str(LOGO_PATH), width="stretch")
+
     st.sidebar.header("Filtros")
 
     year_min = int(data["model_year"].dropna().min())
@@ -168,8 +172,14 @@ def render_metrics(data: pd.DataFrame) -> None:
 
     metric_columns = st.columns(4)
     metric_columns[0].metric("Anuncios", format_number(len(data)))
-    metric_columns[1].metric("Precio mediano", f"${format_number(data['price'].median())}")
-    metric_columns[2].metric("Odometro mediano", format_number(data["odometer"].median()))
+    metric_columns[1].metric(
+        "Precio mediano",
+        f"${format_number(data['price'].median())}",
+    )
+    metric_columns[2].metric(
+        "Odometro mediano",
+        format_number(data["odometer"].median()),
+    )
     metric_columns[3].metric("Modelos", format_number(data["model"].nunique()))
 
 

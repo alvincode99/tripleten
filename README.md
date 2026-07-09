@@ -28,6 +28,7 @@ especificos.
 Funcionalidades incluidas:
 
 - Carga automatica del dataset `data/vehicles_us.csv`.
+- Logo personal JAMNDEV en la barra lateral antes de los filtros.
 - Validacion de columnas esperadas antes de ejecutar el dashboard.
 - Filtros laterales por ano del modelo, precio, tipo de vehiculo, condicion y
   traccion 4WD.
@@ -76,6 +77,8 @@ El dataset contiene `51,525` anuncios y `13` columnas:
 ```text
 .
 |-- app.py
+|-- assets/
+|   `-- jamndev-logo.png
 |-- data/
 |   |-- .gitkeep
 |   `-- vehicles_us.csv
@@ -90,6 +93,7 @@ El dataset contiene `51,525` anuncios y `13` columnas:
 Descripcion de archivos principales:
 
 - `app.py`: aplicacion Streamlit del dashboard.
+- `assets/jamndev-logo.png`: logo personal mostrado en la barra lateral.
 - `notebooks/EDA.ipynb`: notebook de analisis exploratorio inicial.
 - `data/vehicles_us.csv`: dataset del proyecto.
 - `docs/dataset.md`: nota con la fuente y ubicacion del dataset.
